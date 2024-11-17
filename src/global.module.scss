@@ -34,12 +34,24 @@
   justify-content: center;
 }
 
+.top-0 {
+  top: 0px;
+}
+
+.left-0 {
+  left: 0px;
+}
+
 .top-1\/2 {
   top: 50%;
 }
 
 .left-1\/2 {
   left: 50%;
+}
+
+.right-1\/2 {
+  right: 50%;
 }
 
 .border-4 {
@@ -78,6 +90,22 @@
   height: 324px;
 }
 
+.h-\[350px\] {
+  height: 350px;
+}
+
+.w-\[350px\] {
+  width: 350px;
+}
+
+.w-\[130px\] {
+  width: 130px;
+}
+
+.h-\[130px\] {
+  height: 130px;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -92,4 +120,36 @@
 
 .origin-center {
   transform-origin: center;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.bg-black\/10 {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.fixed {
+  position: fixed;
+}
+
+.z-9999 {
+  z-index: 9999;
+}
+
+.bg-slate-500 {
+  background-color: #64748b;
 }
