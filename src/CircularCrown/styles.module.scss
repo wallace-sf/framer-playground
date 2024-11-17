@@ -1,0 +1,109 @@
+@use "../variables";
+
+$circle-slider-pointer-color: #26bf59;
+$circle-slider-pointer-color-transparent: #26bf5900;
+$circle-value: 360;
+
+.fill-square {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.circle {
+  @extend .fill-square;
+  border-radius: 50%;
+}
+
+.segment-mask {
+  mask-image: radial-gradient(
+      circle at center,
+      transparent #{variables.$circle-slider-size * 0.5 - variables.$path-width -
+        1px},
+      white #{variables.$circle-slider-size * 0.5 - variables.$path-width + 0px}
+    ),
+    conic-gradient(
+      from 1deg at center,
+      white 0deg,
+      white calc(#{$circle-value} * 1deg),
+      transparent calc(#{$circle-value} * 1deg),
+      transparent 360deg
+    );
+  mask-composite: intersect;
+}
+
+.circle-slider-wrapper {
+  --circle-slider-outline: #f7f7f7;
+  --circle-slider-bg: #e7e7e7;
+  --circle-slider-pointer-border-color: #fff;
+  --circle-slider-curve-text-color: #5f6368;
+  --circle-slider-pointer-color: #26bf59;
+  --circle-slider-pointer-color-transparent: #26bf5900;
+  --circle-slider-reward-bg: #232323;
+  --circle-value: 360;
+
+  position: relative;
+  width: variables.$circle-slider-size;
+  height: variables.$circle-slider-size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  [data-tid="brand-display-price"] {
+    fill: var(--circle-slider-curve-text-color);
+  }
+}
+
+.active-path {
+  @extend .circle;
+  @extend .segment-mask;
+  background: conic-gradient(
+    from 0deg at center,
+    #{$circle-slider-pointer-color-transparent} 0deg,
+    #{$circle-slider-pointer-color} 90deg
+  );
+}
+
+.divisions-background {
+  width: 376px;
+  height: 376px;
+  position: absolute;
+}
+
+.low-res-divisions-background {
+  @extend .divisions-background;
+  color: rgba(255, 255, 255, 0.2);
+  transition: color 0.4s ease-in-out, transform 0.4s ease-in-out;
+  // transform: rotate(0);
+}
+
+.low-res-divisions-background-with-high {
+  @extend .low-res-divisions-background;
+  color: rgba(255, 255, 255, 0.3);
+  transform: rotate(3deg);
+}
+
+.high-res-divisions-background {
+  @extend .divisions-background;
+  color: rgba(255, 255, 255, 0.3);
+  transition: opacity 0.4s ease-in-out;
+  opacity: 1;
+}
+
+.high-res-divisions-background-hidden {
+  @extend .high-res-divisions-background;
+  opacity: 0;
+}
+
+.pulse-svg {
+  @extend .circle;
+  height: 200%;
+  background: none;
+  color: rgba(0, 0, 0, 0.1);
+
+  > circle {
+    opacity: 0;
+  }
+}

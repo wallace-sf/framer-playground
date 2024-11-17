@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 import { STROKE_WIDTH, TRANSITION } from "./constants";
 
-import * as styles from "./styles.module.scss";
+import * as styles from "../global.module.scss";
 
 export const CircularSector: FC<HTMLMotionProps<"div">> = ({
   className = "",
