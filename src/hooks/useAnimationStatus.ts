@@ -10,11 +10,11 @@ export const useAnimationStatus = () => {
     setPending: useCallback(() => {
       setStatus("pending");
     }, []),
+    setMatching: useCallback(() => {
+      setStatus("matching");
+    }, []),
     setSuccess: useCallback(() => {
       setStatus("success");
-    }, []),
-    setCompleted: useCallback(() => {
-      setStatus("completed");
     }, []),
   };
 };

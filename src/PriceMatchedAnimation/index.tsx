@@ -8,27 +8,30 @@ import { PriceCircle, IPriceCircleProps } from "../PriceCircle";
 import { CircleWithLines } from "../GreenAnimation";
 import { CircularSectorGroup } from "../YellowAnimation";
 import { PulseCircle } from "../PulseCircle";
+import { SuccessAnimation } from "../SuccessAnimation";
 
-import { AnimationStatus } from "../types";
+import { AnimationStatus, DummyFn } from "../types";
 
 import * as styles from "../global.module.scss";
 
-interface IPriceMatchedAnimationProps extends IPriceCircleProps {
+interface IFlowAnimationProps extends IPriceCircleProps {
   status: AnimationStatus;
-  onAnimationComplete?: () => void;
+  onMatchingComplete?: DummyFn;
+  onSuccessComplete?: DummyFn;
 }
 
-export const PriceMatchedAnimation: FC<IPriceMatchedAnimationProps> = ({
+export const FlowAnimation: FC<IFlowAnimationProps> = ({
   price,
   status,
-  onAnimationComplete,
+  onMatchingComplete,
+  onSuccessComplete,
 }) => {
   return (
     <AnimationContainer
       className={classNames(styles["h-full"], styles["w-full"])}
     >
       <AnimatePresence>
-        {status !== "completed" ? (
+        {status !== "success" ? (
           <motion.div
             className={classNames(styles["w-[130px]"], styles["h-[130px]"])}
             exit={{ opacity: 0 }}
@@ -53,9 +56,9 @@ export const PriceMatchedAnimation: FC<IPriceMatchedAnimationProps> = ({
             <CircularSectorGroup />
           </motion.div>
         ) : null}
-        {status === "success" ? (
+        {status === "matching" ? (
           <motion.div
-            key="success"
+            key="matching"
             layout
             exit={{ opacity: 0 }}
             className={classNames(
@@ -64,12 +67,26 @@ export const PriceMatchedAnimation: FC<IPriceMatchedAnimationProps> = ({
               styles["w-[350px]"]
             )}
           >
-            <CircleWithLines onAnimationComplete={onAnimationComplete} />
+            <CircleWithLines onAnimationComplete={onMatchingComplete} />
+          </motion.div>
+        ) : null}
+        {status === "success" ? (
+          <motion.div
+            key="success"
+            className={classNames(
+              styles.absolute,
+              styles["w-full"],
+              styles["h-full"]
+            )}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <SuccessAnimation onAnimationComplete={onSuccessComplete} />
           </motion.div>
         ) : null}
       </AnimatePresence>
       <AnimatePresence>
-        {status !== "completed" ? (
+        {status !== "success" ? (
           <motion.div
             className={classNames(
               styles.absolute,

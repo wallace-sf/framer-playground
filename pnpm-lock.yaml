@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@rive-app/react-canvas':
+        specifier: ^4.16.4
+        version: 4.16.4(react@18.3.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -487,6 +490,14 @@ packages:
   '@pkgjs/parseargs@0.11.0':
     resolution: {integrity: sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==}
     engines: {node: '>=14'}
+
+  '@rive-app/canvas@2.23.8':
+    resolution: {integrity: sha512-cs65ihcRVO8LeBssXtajxiDuuQnscHYWhikNV9BU2SQwWNzHPirrzjddM/MlMbSFUpd+oOYW5aZx1I11YHmnfQ==}
+
+  '@rive-app/react-canvas@4.16.4':
+    resolution: {integrity: sha512-vjsWcfAH+Ngqu/4kGA7KR+sM8dk16im84FVu2znssV1Ev9Y0cWJWevMQq5oNaBi5zWkXc8D9xwvv51e6zDp2qA==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
   '@swc/core-darwin-arm64@1.8.0':
     resolution: {integrity: sha512-TIus1/SE/Ud4g84hCnchcagu+LfyndSDy5r5qf64nflojejDidPU9Fp1InzQhQpEgIpntnZID/KFCP5rQnvsIw==}
@@ -2389,6 +2400,13 @@ snapshots:
 
   '@pkgjs/parseargs@0.11.0':
     optional: true
+
+  '@rive-app/canvas@2.23.8': {}
+
+  '@rive-app/react-canvas@4.16.4(react@18.3.1)':
+    dependencies:
+      '@rive-app/canvas': 2.23.8
+      react: 18.3.1
 
   '@swc/core-darwin-arm64@1.8.0':
     optional: true
