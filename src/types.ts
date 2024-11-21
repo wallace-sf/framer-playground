@@ -1,1 +1,2 @@
-export type AnimationStatus = "pending" | "success" | "completed";
+export type AnimationStatus = "pending" | "matching" | "success";
+export type DummyFn = () => void;

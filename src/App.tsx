@@ -2,16 +2,19 @@ import classNames from "classnames";
 
 // import "./index.css";
 
-import { PriceMatchedAnimation } from "./PriceMatchedAnimation";
-import { YellowAnimation } from "./YellowAnimation";
-import { GreenAnimation } from "./GreenAnimation";
+import { FlowAnimation } from "./PriceMatchedAnimation";
+// import { YellowAnimation } from "./YellowAnimation";
+// import { GreenAnimation } from "./GreenAnimation";
+// import { SuccessAnimation } from "./SuccessAnimation";
 
 import * as styles from "./global.module.scss";
 
 import { useAnimationStatus } from "./hooks";
 
 export default function App() {
-  const { status, setSuccess, setCompleted } = useAnimationStatus();
+  const { status, setSuccess, setMatching } = useAnimationStatus();
+
+  console.log({ status });
 
   return (
     <div
@@ -36,14 +39,17 @@ export default function App() {
           styles["-x-translate-1/2"],
           styles["z-9999"]
         )}
-        onClick={setSuccess}
+        onClick={setMatching}
       >
-        Change to Success
+        Mutate
       </button>
-      <PriceMatchedAnimation
+      <FlowAnimation
         price={100}
         status={status}
-        onAnimationComplete={setCompleted}
+        onMatchingComplete={setSuccess}
+        onSuccessComplete={() => {
+          console.log("Animation Completed");
+        }}
       />
       {/* <YellowAnimation price={100} /> */}
       {/* <GreenAnimation price={100} /> */}
